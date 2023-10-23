@@ -1,4 +1,6 @@
 {
   "githubToken": "",
+  "modrinthToken": "",
+  "cacheDir": "./cache",
   "port": 8080
 }

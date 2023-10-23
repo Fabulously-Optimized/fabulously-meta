@@ -31,6 +31,7 @@ export interface Mod {
 export type ModList = Mod[];
 
 export interface ModpackVersion {
+  tag: string,
   id: string,
   url: string,
   isPreRelease: boolean,
