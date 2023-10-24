@@ -1,5 +1,5 @@
 {
-  "name": "fabulous-meta",
+  "name": "fabulously-meta",
   "version": "1.0.0",
   "description": "API server to store various metadata on fabulously optimized - mod lists, changelogs etc.",
   "main": "dist/src/index.js",
