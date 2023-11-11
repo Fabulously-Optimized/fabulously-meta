@@ -1,11 +1,7 @@
 // Setup octokit using the github token from config.json
-import { Octokit } from 'octokit';
 import { config } from './index';
-import { readdir, readFile, writeFile, mkdir } from "fs/promises";
-import { resolve } from "path"
-import { Mod, ModVersion, ModpackVersion, ModpackVersionList } from './types';
-
-const octokit: Octokit = new Octokit({ auth: config.githubToken });
+import { Mod, ModpackVersion, ModpackVersionList } from './types';
+import { octokit } from './types';
 
 // Get all releases from the GitHub API for the "fabulously-optimized/fabulously-optimized" repository.
 export async function getModpackReleases(): Promise<ModpackVersionList> {

@@ -6,7 +6,8 @@ import mcache from 'memory-cache';
 
 // Import config.json found next to package.json
 import config from '../config.json';
-import { getModpackReleases } from './github';
+import { getModpackReleases } from './releases';
+import { getContributors } from './contributors';
 export { config };
 
 var cache = (duration: number) => {
@@ -44,4 +45,14 @@ app.get("/v1/modpackVersions", cache(5 * 60), async (req, res) => {
   }
 });
 
-app.listen(config.port, () => console.log('Server running on port 5000'));
+app.get("/v1/contributors", cache(5 * 60), async (req, res) => {
+  try {
+    const contributors = await getContributors();
+    return res.status(200).send(contributors);
+  } catch (e: any) {
+    console.error("[ERROR] Failed to get contributors: " + e);
+    return res.status(500).send("Internal server error: " + e);
+  }
+})
+
+app.listen(config.port, () => console.log('Server running on port ' + config.port));

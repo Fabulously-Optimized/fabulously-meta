@@ -1,3 +1,6 @@
+import { Octokit } from "octokit";
+import { config } from "./index";
+
 /**
  * Represents a mod's version information.
  */
@@ -45,3 +48,13 @@ export interface ModpackVersionList {
   latest: ModpackVersion,
   latestPreRelease: ModpackVersion,
 }
+
+// Where string is GitHub username.
+export type Contributor = string;
+
+export interface ContributorsList {
+  organizationMembers: Contributor[],
+  contributors: Contributor[],
+}
+
+export const octokit: Octokit = new Octokit({ auth: config.githubToken });
