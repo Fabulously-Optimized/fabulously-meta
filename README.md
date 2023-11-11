@@ -37,3 +37,24 @@ Currently the API can be found at `https://fabulously-meta.mineblock11.dev/` - h
   "latestPreRelease": {...}
 }
 ```
+
+- `/v1/contributors` - Get a list of all contributors to the GitHub Organization.
+
+### Expected Response
+```json
+{
+  "organizationMembers": [
+    "Imzxhir",
+    "Kichura",
+    "Madis0",
+    "mineblock11",
+    "osfanbuff63"
+  ],
+  "contributors": [
+    "RaptaG",
+    "RozeFound",
+    "AlphaKR93",
+    "..."
+  ]
+}
+```
