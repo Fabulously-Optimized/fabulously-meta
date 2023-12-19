@@ -41,7 +41,9 @@ export async function getContributors(): Promise<ContributorsList> {
 
   // Remove organization members from contributors.
   const filteredContributors = [...new Set(contributors.filter((contributor) => {
-    return !orgContributors.includes(contributor);
+    return !orgContributors.some((orgContributor) => {
+      return orgContributor.username === contributor.username;
+    });
   }))];
 
   return {
