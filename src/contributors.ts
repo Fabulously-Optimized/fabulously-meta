@@ -46,13 +46,13 @@ export async function getContributors(): Promise<ContributorsList> {
     });
   }))];
 
-  // Sort contributors alphabetically.
+  // Sort alphabetically.
   filteredContributors.sort((a, b) => {
-    return a.username.localeCompare(b.username);
+    return a.username > b.username ? 1 : (a.username < b.username ? -1 : 0);
   });
 
   orgContributors.sort((a, b) => {
-    return a.username.localeCompare(b.username);
+    return a.username > b.username ? 1 : (a.username < b.username ? -1 : 0);
   });
 
   return {
