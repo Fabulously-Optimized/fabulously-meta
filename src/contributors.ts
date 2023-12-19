@@ -49,14 +49,25 @@ export async function getContributors(): Promise<ContributorsList> {
   });
 
   // Remove organization members from contributors and remove duplicates.
-  const filteredContributors = [...new Set(contributors.filter((contributor) => {
+  const filteredContributors = contributors.filter((contributor) => {
     return !orgContributors.some((orgContributor) => {
       return orgContributor.username === contributor.username;
     });
-  }))];
+  });
+
+  // Remove duplicates
+  const nonDuplicatedContributors: Contributor[] = [];
+
+  for (const contributor of filteredContributors) {
+    if (!nonDuplicatedContributors.some((nonDuplicatedContributor) => {
+      return nonDuplicatedContributor.username === contributor.username;
+    })) {
+      nonDuplicatedContributors.push(contributor);
+    }
+  }
 
   return {
     organizationMembers: orgContributors,
-    contributors: filteredContributors,
+    contributors: nonDuplicatedContributors,
   };
 }
