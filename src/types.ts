@@ -50,7 +50,10 @@ export interface ModpackVersionList {
 }
 
 // Where string is GitHub username.
-export type Contributor = string;
+export type Contributor = {
+  username: string,
+  avatar_url: string,
+};
 
 export interface ContributorsList {
   organizationMembers: Contributor[],

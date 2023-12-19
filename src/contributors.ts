@@ -8,7 +8,10 @@ export async function getContributors(): Promise<ContributorsList> {
   })).data;
 
   const orgContributors: Contributor[] = organizationMembers.map((member) => {
-    return member.login;
+    return {
+      username: member.login,
+      avatar_url: member.avatar_url ?? "https://github.com/ghost.png",
+    }
   });
 
   // Get all contributors from "fabulously-optimized" repositories.
@@ -26,7 +29,12 @@ export async function getContributors(): Promise<ContributorsList> {
 
     for (const contributor of repositoryContributors) {
       if (contributor.login) {
-        contributors.push(contributor.login);
+        if (contributor.login.includes("[bot]")) continue;
+
+        contributors.push({
+          username: contributor.login,
+          avatar_url: contributor.avatar_url ?? "https://github.com/ghost.png",
+        });
       }
     }
   }
