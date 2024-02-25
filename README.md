@@ -1,16 +1,14 @@
 # Fabulously Meta
 
-A web API used to power the Fabulously Optimized Website.
+A web API used for additional features on the Fabulously Optimized Website. Currently not hosted or used.
 
 This API collates a mod list, changelog and various information from the Modrinth and GitHub APIs. All responses are cached for 5 minutes to prevent spam to the Modrinth and GitHub APIs.
 
 ## Routes
 
-Currently the API can be found at `https://fabulously-meta.mineblock11.dev/` - however this will certainly change.
-
 - `/v1/modpackVersions` - Get a list of all modpack versions, the latest version and the latest pre-release version.
 
-### Expected Response
+#### Expected Response
 ```json
 {
   "versions": [...],
@@ -40,14 +38,13 @@ Currently the API can be found at `https://fabulously-meta.mineblock11.dev/` - h
 
 - `/v1/contributors` - Get a list of all contributors to the GitHub Organization.
 
-### Expected Response
+#### Expected Response
 ```json
 {
   "organizationMembers": [
     "Imzxhir",
     "Kichura",
     "Madis0",
-    "mineblock11",
     "osfanbuff63"
   ],
   "contributors": [
